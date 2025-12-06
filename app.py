@@ -33,7 +33,7 @@ def increment_stat(stat_dict, player):
 def scrape():
     stats_by_game = OrderedDict()
     stats_by_shot = OrderedDict()
-    for game_id in range(1, settings["game_series_num"]):
+    for game_id in range(1, settings["game_series_num"] + 1):
 
         if game_id in settings["exception_game_ids"]:
             logger.info(f"Skipping Game ID: {game_id}")
