@@ -15,13 +15,14 @@ templates_dir = configs_dir / "templates"
 files_dir = configs_dir / "files"
 dist_dir = current_dir / "dist"
 logger = getLogger("th_ura_summary")
-logger.setLevel("INFO")
 
 init_logger()
 
 with open(configs_dir / "config.yml", "r") as file:
     settings = yaml.safe_load(file)
     logger.info("Configuration loaded.")
+
+logger.setLevel(settings["log_level"])
 
 
 def increment_stat(stat_dict, player):

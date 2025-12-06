@@ -8,3 +8,5 @@ exception_game_ids:
   - 5
   - 9
   - 19
+
+log_level: "INFO"
