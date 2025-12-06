@@ -1,0 +1,123 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ meta.title }} | 裏スコボまとめ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="裏スコボまとめ" />
+    <meta name="keywords" content="裏スコボ,裏用,東方,東方project,touhou,2hu" />
+
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        background: #faf9fd;
+        margin: 0;
+        padding: 0 0 60px 0;
+        line-height: 1.8;
+        color: #333;
+      }
+
+      header {
+        background: linear-gradient(135deg, #7c57c8, #a084e8);
+        padding: 40px 20px;
+        text-align: center;
+        color: white;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.4rem;
+        letter-spacing: 0.03em;
+      }
+
+      main {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .score-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0px 3px 10px rgba(120, 100, 180, 0.12);
+      }
+
+      .score-table thead th {
+        background: #7c57c8;
+        color: white;
+        text-align: left;
+        padding: 12px 10px;
+        font-size: 1rem;
+      }
+
+      .score-table td:first-child,
+      .score-table th:first-child {
+        white-space: nowrap;
+        padding-right: 16px;
+        min-width: 50px;
+      }
+
+      .score-table td:nth-child(2),
+      .score-table th:nth-child(2) {
+        white-space: nowrap;
+        padding-right: 16px;
+        min-width: 50px;
+      }
+
+      .score-table tbody td {
+        padding: 10px;
+        border-bottom: 1px solid rgba(100, 80, 160, 0.2);
+      }
+
+      .score-table tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      .score-table tbody tr:hover {
+        background: #f5f1ff;
+        transition: 0.2s;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        color: #777;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>{{ meta.title }}</h1>
+    </header>
+
+    <main>
+      <table class="score-table">
+        <thead>
+          <tr>
+            <th>{{ meta.table.header.count }}</th>
+            <th>{{ meta.table.header.player_count }}</th>
+            <th>{{ meta.table.header.names }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in rows %}
+            <tr>
+              <td>{{ row.count }}{{ meta.table.rows.unit.count }}</td>
+              <td>{{ row.player_count }}{{ meta.table.rows.unit.player_count }}</td>
+              <td>{{ row.names | join(', ') }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <footer>
+        ※統計は裏スコボ情報に基づく集計です。
+      </footer>
+    </main>
+  </body>
+</html>
