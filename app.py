@@ -7,7 +7,7 @@ from collections import defaultdict, OrderedDict
 from jinja2 import Template
 from logging import getLogger
 from log import init_logger
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 import shutil
 
 current_dir = Path(__file__).resolve().parent
@@ -106,7 +106,9 @@ def save_html(template: Template, filename: str, rows: list, meta: dict):
 
 
 fetched_structed_data = scrape()
-fetched_time = datetime.now().strftime("%Y年%m月%d日 %H時%M分")
+fetched_time = datetime.now(timezone(timedelta(hours=9))).strftime(
+    "%Y年%m月%d日 %H時%M分"
+)
 
 
 with open(templates_dir / "table.html.j2", "r", encoding="utf-8") as f:
