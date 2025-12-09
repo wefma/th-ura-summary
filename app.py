@@ -7,6 +7,7 @@ from collections import defaultdict, OrderedDict
 from jinja2 import Template
 from logging import getLogger
 from log import init_logger
+from datetime import datetime
 import shutil
 
 current_dir = Path(__file__).resolve().parent
@@ -105,12 +106,13 @@ def save_html(template: Template, filename: str, rows: list, meta: dict):
 
 
 fetched_structed_data = scrape()
+fetched_time = datetime.now().strftime("%Y年%m月%d日 %H時%M分")
 
 
 with open(templates_dir / "table.html.j2", "r", encoding="utf-8") as f:
     template_source = f.read()
-    template = Template(source=template_source)
-    logger.info("Loaded HTML template.")
+    template_table = Template(source=template_source)
+    logger.info("Loaded table.html template.")
 
 if not dist_dir.exists():
     dist_dir.mkdir()
@@ -118,8 +120,8 @@ if not dist_dir.exists():
 
 
 save_html(
-    template,
-    "stat_by_game.html",
+    template_table,
+    "stat-by-game.html",
     build_rows(fetched_structed_data["stats_by_game"]),
     {
         "title": "裏スコボまとめ(作品数)",
@@ -136,12 +138,13 @@ save_html(
                 },
             },
         },
+        "fetched_time": fetched_time,
     },
 )
 
 save_html(
-    template,
-    "stat_by_shot.html",
+    template_table,
+    "stat-by-shot.html",
     build_rows(fetched_structed_data["stats_by_shot"]),
     {
         "title": "裏スコボまとめ(機体数)",
@@ -158,9 +161,23 @@ save_html(
                 },
             },
         },
+        "fetched_time": fetched_time,
     },
 )
 
-shutil.copy(files_dir / "index.html", dist_dir / "index.html")
+with open(templates_dir / "index.html.j2", "r", encoding="utf-8") as f:
+    template_source = f.read()
+    template_index = Template(source=template_source)
+    logger.info("Loaded index.html template.")
+
+with open(dist_dir / "index.html", "w", encoding="utf-8") as f:
+    f.write(
+        template_index.render(
+            meta={"fetched_time": fetched_time},
+        )
+    )
+
+# shutil.copy(files_dir / "index.html", dist_dir / "index.html")
+shutil.copytree(files_dir, dist_dir, dirs_exist_ok=True)
 
 logger.info("All tasks completed successfully.")

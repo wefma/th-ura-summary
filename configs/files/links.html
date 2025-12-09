@@ -51,34 +51,58 @@
         <div id="contents">
           <div id="main">
             <section>
-              <h2>{{ meta.title }}</h2>
+              <h2>当サイトについて</h2>
 
-              <table class="score-table">
-                <thead>
-                  <tr>
-                    <th>{{ meta.table.header.count }}</th>
-                    <th>{{ meta.table.header.player_count }}</th>
-                    <th>{{ meta.table.header.names }}</th>
-                  </tr>
-                </thead>
+              <table class="table1">
                 <tbody>
-                  {% for row in rows %}
                   <tr>
-                    <td>{{ row.count }}{{ meta.table.rows.unit.count }}</td>
+                    <th>
+                      <a href="http://silentselene.net" target="_blank">
+                        裏用
+                      </a>
+                    </th>
                     <td>
-                      {{ row.player_count }}{{ meta.table.rows.unit.player_count
-                      }}
+                      本サイトが統計を取るソースとしているページです。大台に乗った人が集計されています。
                     </td>
-                    <td>{{ row.names | join(', ') }}</td>
                   </tr>
-                  {% endfor %}
+                  <tr>
+                    <th>
+                      <a href="http://silentselene.net" target="_blank">
+                        サイレントセレナ
+                      </a>
+                    </th>
+                    <td>
+                      リプレイを上げられるスコアボードです。
+                      アカウント制なので、プレイヤー本人が確かにプレイしたということを証明できます。
+                      一生残したいプレイはこちらに上げましょう。
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <a href="https://thex-score.net">東方EXTRAスコアボード</a>
+                    </th>
+                    <td>
+                      裏スコボは難易度Lunaticのみの集計です。
+                      対してこちらはExtraを専門で集計しています。
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <th>
+                      <a href="https://l-uploader.puresign.tokyo">えるろだ</a>
+                    </th>
+                    <td>
+                      東方リプレイアップローダです。
+                      アカウント制ではない分、気軽に投稿できます。
+                      一生残したいわけではないけど雑に投稿して共有したい場合はこちらをご使用ください。
+                    </td>
+                  </tr>
+                  <tr>
+                    <th><a href="https://wefma.net">Wefmaika Page</a></th>
+                    <td>管理人のページです。</td>
+                  </tr>
                 </tbody>
               </table>
-            </section>
-            <section>
-              <h2>最終更新</h2>
-
-              <p>{{ meta.fetched_time }}</p>
             </section>
           </div>
         </div>

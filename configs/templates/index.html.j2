@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>裏スコボまとめ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="東方projectのスコアアタックの上位プレイヤーのまとめサイト"
+    />
+    <meta
+      name="keywords"
+      content="東方project,裏スコボ,スコアアタック,プレイヤー,統計"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/openclose.js"></script>
+    <script src="js/fixmenu_pagetop.js"></script>
+  </head>
+
+  <body class="top">
+    <div id="container">
+      <header>
+        <div class="inner">
+          <h1 id="logo">
+            <a href="index.html">
+              <img src="images/logo.png" alt="裏スコボまとめ" />
+            </a>
+          </h1>
+          <nav id="menubar">
+            <ul>
+              <li><a href="index.html">ホーム</a></li>
+              <li><a href="stat-by-game.html">作品別集計</a></li>
+              <li><a href="stat-by-shot.html">機体別集計</a></li>
+              <li><a href="links.html">リンク</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <nav id="menubar-s">
+        <ul>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="stat-by-game.html">作品別集計</a></li>
+          <li><a href="stat-by-shot.html">機体別集計</a></li>
+          <li><a href="links.html">リンク</a></li>
+        </ul>
+      </nav>
+
+      <div class="inner">
+        <div id="contents">
+          <div id="main">
+            <section>
+              <h2>ようこそ</h2>
+
+              <h3>このサイトは何</h3>
+              <p>
+                このサイトは、pndsngさんが管理する
+                <a href="https://thscore.pndsng.com/">裏用</a>
+                という東方projectスコア大台達成者リストの
+                統計をまとめるサイトです。
+              </p>
+              <p>
+                何作品やっている人が何人いるか、何機体やっている人が何人いるか等が分かります。
+              </p>
+              <p>自分の立ち位置確認等にお使いください。</p>
+            </section>
+
+            <section>
+              <h2>ページ一覧</h2>
+              <table class="ta1">
+                <tr>
+                  <td><a href="index.html">ホーム</a></td>
+                  <td>このページです。</td>
+                </tr>
+                <tr>
+                  <td><a href="stat-by-game.html">作品別一覧</a></td>
+                  <td>プレイヤーが何作品で大台に乗っているかを確認します。</td>
+                </tr>
+                <tr>
+                  <td><a href="stat-by-shot.html">作品別一覧</a></td>
+                  <td>
+                    プレイヤーが全ての作品を合計して何機体で大台に乗っているかを確認します。
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="links.html">リンク</a></td>
+                  <td>リンクです。</td>
+                </tr>
+              </table>
+            </section>
+
+            <section>
+              <h2>概要</h2>
+
+              <h3>東方projectってな～に</h3>
+              <p>
+                <a href="https://www16.big.or.jp/~zun/">上海アリス幻樂団</a>
+                にて頒布されている一連の弾幕シューティングゲームシリーズです。
+              </p>
+              <p>
+                高い難易度ながらその奥の深いゲーム性や音楽、及び世界観で多くの人々に愛されています。
+              </p>
+
+              <h3>このサイトの仕組みについて</h3>
+              <p>
+                このサイトは毎朝9時(GMT+0900)に
+                <a href="https://thscore.pndsng.com/">裏用</a>
+                からデータを取得してくるように設定しています。
+              </p>
+              <p>
+                しかし
+                <a
+                  href="https://docs.github.com/ja/pages/getting-started-with-github-pages/creating-a-github-pages-site"
+                >
+                  Github Pages
+                </a>
+                にてホスティングしており、定期的にデータ取得を行うにあたって共用ランナーである
+                <a href="https://docs.github.com/ja/actions">Github Actions </a>
+                のcronを使用しているため、1時間以上遅れて実行される可能性があります。
+                ご了承ください。
+              </p>
+              <p>
+                詳しいソースコードは
+                <a href="https://github.com/wefma/th-ura-summary">Github</a>
+                にて公開されています。
+              </p>
+            </section>
+
+            <section id="new">
+              <h2>最終更新</h2>
+
+              <p>{{ meta.fetched_time }}</p>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <small
+          >Copyright&copy; <a href="https://wefma.net">Wefmaika</a> All Rights
+          Reserved.</small
+        >
+        <span class="pr"
+          ><a href="https://template-party.com/" target="_blank"
+            >Web Design:Template-Party</a
+          ></span
+        >
+      </footer>
+    </div>
+
+    <p class="nav-fix-pos-pagetop"><a href="#">↑</a></p>
+
+    <div id="menubar_hdr" class="close"></div>
+    <script>
+      if (OCwindowWidth() <= 800) {
+        open_close("menubar_hdr", "menubar-s");
+      }
+    </script>
+  </body>
+</html>
