@@ -54,7 +54,7 @@ def scrape():
 
         game_unique_players = []
         for row in table.find_all("tr")[1:]:
-            player = row.find_all("td")[4].text
+            player = escape(row.find_all("td")[4].text)
             increment_stat(stats_by_shot, player)
             if player not in game_unique_players:
                 game_unique_players.append(player)
