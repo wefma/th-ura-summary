@@ -1,1 +1,1 @@
-Sitemap: https://summary.touhou.wefma.net/sitemap.xml
+Sitemap: http://summary.touhou.wefma.net/sitemap.xml
