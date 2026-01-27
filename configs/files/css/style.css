@@ -57,8 +57,8 @@ header .inner {
 /*ヘッダーのinnerへの追加設定（トップページへの追加設定）*/
 .top header .inner {
 	height: 550px;
-	background: url(../images/mainimg.png) no-repeat center center;			/*背景画像の読み込み（古いブラウザ用）*/
-	background: url(../images/mainimg.png) no-repeat center center /100%;	/*背景写真の読み込み。幅100%。*/
+	background: url(../images/mainimg.webp) no-repeat center center;			/*背景画像の読み込み（古いブラウザ用）*/
+	background: url(../images/mainimg.webp) no-repeat center center /100%;	/*背景写真の読み込み。幅100%。*/
 }
 /*ロゴ画像の設定*/
 header #logo {
