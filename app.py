@@ -127,6 +127,7 @@ save_html(
     build_rows(fetched_structed_data["stats_by_game"]),
     {
         "title": "裏スコボまとめ(作品数)",
+        "path": "stat-by-game.html",
         "table": {
             "header": {
                 "count": "作品数",
@@ -150,6 +151,7 @@ save_html(
     build_rows(fetched_structed_data["stats_by_shot"]),
     {
         "title": "裏スコボまとめ(機体数)",
+        "path": "stat-by-shot.html",
         "table": {
             "header": {
                 "count": "機体数",
