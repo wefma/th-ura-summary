@@ -95,7 +95,9 @@ def build_rows(data: dict):
 
 def save_html(template: Template, filename: str, rows: list, meta: dict):
 
-    with open(dist_dir / filename, "w", encoding="utf-8") as f:
+    output_path = dist_dir / filename
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, "w", encoding="utf-8") as f:
         f.write(
             template.render(
                 rows=rows,
@@ -116,18 +118,19 @@ with open(templates_dir / "table.html.j2", "r", encoding="utf-8") as f:
     template_table = Template(source=template_source)
     logger.info("Loaded table.html template.")
 
-if not dist_dir.exists():
-    dist_dir.mkdir()
-    logger.info(f"Created distribution directory at {dist_dir}")
+if dist_dir.exists():
+    shutil.rmtree(dist_dir)
+dist_dir.mkdir()
+logger.info(f"Created clean distribution directory at {dist_dir}")
 
 
 save_html(
     template_table,
-    "stat-by-game.html",
+    "stat-by-game/index.html",
     build_rows(fetched_structed_data["stats_by_game"]),
     {
         "title": "裏スコボまとめ(作品数)",
-        "path": "stat-by-game.html",
+        "path": "stat-by-game/",
         "table": {
             "header": {
                 "count": "作品数",
@@ -147,11 +150,11 @@ save_html(
 
 save_html(
     template_table,
-    "stat-by-shot.html",
+    "stat-by-shot/index.html",
     build_rows(fetched_structed_data["stats_by_shot"]),
     {
         "title": "裏スコボまとめ(機体数)",
-        "path": "stat-by-shot.html",
+        "path": "stat-by-shot/",
         "table": {
             "header": {
                 "count": "機体数",
@@ -183,5 +186,10 @@ with open(dist_dir / "index.html", "w", encoding="utf-8") as f:
 
 # shutil.copy(files_dir / "index.html", dist_dir / "index.html")
 shutil.copytree(files_dir, dist_dir, dirs_exist_ok=True)
+
+# GitHub Pages serves a directory index at a clean URL such as /links/.
+links_dir = dist_dir / "links"
+links_dir.mkdir(exist_ok=True)
+shutil.move(dist_dir / "links.html", links_dir / "index.html")
 
 logger.info("All tasks completed successfully.")
